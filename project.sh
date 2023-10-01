@@ -40,10 +40,9 @@ _generateTags() {
 _compile() {
   assembler="fasm"
   src="src/main.asm"
-  object="main.o"
 
   echo ">>> Compiling"
-  $assembler $src $output_dir/$object
+  $assembler $src $output_dir/$app
 }
 
 _build() {
@@ -53,16 +52,16 @@ _build() {
 }
 
 _debug() {
-  cd $output_dir
+  pushd $output_dir > /dev/null
   seergdb -s $app
-  cd ../..
+  popd > /dev/null
 }
 
 _run() {
   echo ">>> Running $app"
-  cd $output_dir
+  pushd $output_dir > /dev/null
   ./$app
-  cd ../..
+  popd > /dev/null
 }
 
 _clean() {
