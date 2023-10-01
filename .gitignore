@@ -1,0 +1,5 @@
+!.gitignore
+garbage/
+output/*
+p
+tags
